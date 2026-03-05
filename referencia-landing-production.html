@@ -1,0 +1,268 @@
+<style>
+    /* ===== TRUST INLINE HERO (FORZADO) ===== */
+
+    .lp-card__title {
+        margin: 0 0 14px !important;
+        font-size: 27px !important;
+        color: white !important;
+    }
+
+    .lp-trust-inline {
+        margin-top: 18px !important;
+        display: flex !important;
+        align-items: center !important;
+        flex-wrap: wrap !important;
+        gap: 7.7px !important;
+        font-size: 18px !important;
+        opacity: 0.95 !important;
+    }
+
+    .lp-trust-inline__item {
+        display: inline-flex !important;
+        align-items: center !important;
+        font-size: 15px !important;
+        gap: 6px !important;
+        white-space: nowrap !important;
+    }
+
+    .lp-trust-inline__icon {
+        width: 14px !important;
+        height: 14px !important;
+        color: #ffffff !important;
+        opacity: 0.9 !important;
+    }
+
+    .lp-trust-inline__sep {
+        opacity: 0.5 !important;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+
+        /* Oculta barra de garantías en móvil */
+        .lp-trust-inline {
+            display: none !important;
+        }
+
+        .lp-hero__title {
+            font-size: 28px !important;
+        }
+
+        .lp-hero__subtitle {
+            font-size: 16px !important;
+        }
+
+        /* ===== TÍTULO FORMULARIO (MOBILE) =====
+       - Más "marketing": menos grito, más aire y jerarquía
+       - Sin tocar el HTML (sigue en mayúsculas en el markup)
+    */
+        .lp-card__title {
+            text-transform: none !important;
+            font-variant-caps: normal !important;
+            letter-spacing: -0.01em !important;
+            line-height: 1.18 !important;
+
+            /* tamaño y peso para que se lea PRO */
+            font-size: 22px !important;
+            font-weight: 800 !important;
+
+            /* spacing */
+            margin-bottom: 10px !important;
+        }
+    }
+</style>
+
+<div id="inicio" class="lp-hero">
+    <div class="lp-hero__bg" aria-hidden="true"></div>
+
+    <!-- logo -->
+    <div class="lp-logo">
+        <img src="https://www.importacionesamexico.com.mx/images/logos/11/Logo-de-IMX--png-prueba-2-sin-fondo-sitio-web_ddc5-w9_jiy3-j9_r2y7-p6.png"
+            alt="Logo de Importaciones a MEXICO" class="lp-logo__image" />
+    </div>
+
+    <div class="lp-hero__inner">
+
+        <section class="lp-hero__content">
+            <h1 class="lp-hero__title">
+                Equipa tu negocio con<br>
+                Máquinas de Hielo de<br>
+                Grado Industrial
+            </h1>
+
+            <p class="lp-hero__subtitle">
+                Importaciones directas y asesorías especializadas para
+                <strong>restaurantes, hoteles y empresas.</strong>
+            </p>
+
+            <!-- Garantías -->
+            <div class="lp-hero__subtitle lp-hero__trust lp-trust-inline" aria-label="Garantías y confianza">
+
+                <span class="lp-trust-item lp-trust-inline__item">
+                    <svg class="lp-trust-inline__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        aria-hidden="true">
+                        <path fill="currentColor"
+                            d="M12 2L3 6v6c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V6l-9-4z" />
+                    </svg>
+                    Garantía de Fábrica
+                </span>
+
+                <span class="lp-trust-inline__sep">|</span>
+
+                <span class="lp-trust-item lp-trust-inline__item">
+                    <svg class="lp-trust-inline__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        aria-hidden="true">
+                        <path fill="currentColor"
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                    </svg>
+                    Certificación ISO 9001
+                </span>
+
+                <span class="lp-trust-inline__sep">|</span>
+
+                <span class="lp-trust-item lp-trust-inline__item">
+                    <svg class="lp-trust-inline__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        aria-hidden="true">
+                        <path fill="currentColor"
+                            d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.21 2.2z" />
+                    </svg>
+                    Asesoría Especializada
+                </span>
+            </div>
+        </section>
+
+        <!-- FORMULARIO -->
+        <aside class="lp-card" aria-label="Formulario de cotización">
+
+            <h2 class="lp-card__title">
+                ¿Cuánto hielo necesitas?<br>
+                Te asesoramos
+            </h2>
+
+            <form class="lp-form cm-processed-form" action="{""|fn_url}" method="post" enctype="multipart/form-data"
+                name="forms_form">
+
+                <input type="hidden" name="fake" value="1">
+                <input type="hidden" name="page_id" value="67">
+
+                <div class="lp-field">
+                    <label class="lp-label" for="elm_33">Nombre completo</label>
+                    <input id="elm_33" name="form_values[33]" class="lp-input" type="text" placeholder="Tu nombre"
+                        autocomplete="name" required />
+                </div>
+
+                <div class="lp-field">
+                    <label class="lp-label" for="elm_34">Correo electrónico</label>
+                    <input type="hidden" name="customer_email" value="34">
+                    <input id="elm_34" name="form_values[34]" class="lp-input" type="email"
+                        placeholder="Tu correo electrónico" autocomplete="email" required />
+                </div>
+
+                <div class="lp-field">
+                    <label class="lp-label" for="elm_35">Teléfono</label>
+                    <input id="elm_35" name="form_values[35]" class="lp-input" type="tel"
+                        placeholder="Tu número de teléfono" autocomplete="tel" required />
+                </div>
+
+                <!-- ✅ ESTADO (CS-Cart backend oficial: elm_90 / form_values[90] / values 91-122) -->
+                <div class="lp-field">
+                    <label for="elm_90" class="lp-label">Estado</label>
+                    <select id="elm_90" class="lp-select cm-required" name="form_values[90]" required>
+                        <option value="">Selecciona tu estado</option>
+                        <option value="91">Aguascalientes</option>
+                        <option value="92">Baja California</option>
+                        <option value="93">Baja California Sur</option>
+                        <option value="94">Campeche</option>
+                        <option value="95">Coahuila</option>
+                        <option value="96">Colima</option>
+                        <option value="97">Chiapas</option>
+                        <option value="98">Chihuahua</option>
+                        <option value="99">Ciudad de México</option>
+                        <option value="100">Durango</option>
+                        <option value="101">Guanajuato</option>
+                        <option value="102">Guerrero</option>
+                        <option value="103">Hidalgo</option>
+                        <option value="104">Jalisco</option>
+                        <option value="105">Estado de México</option>
+                        <option value="106">Michoacán</option>
+                        <option value="107">Morelos</option>
+                        <option value="108">Nayarit</option>
+                        <option value="109">Nuevo León</option>
+                        <option value="110">Oaxaca</option>
+                        <option value="111">Puebla</option>
+                        <option value="112">Querétaro</option>
+                        <option value="113">Quintana Roo</option>
+                        <option value="114">San Luis Potosí</option>
+                        <option value="115">Sinaloa</option>
+                        <option value="116">Sonora</option>
+                        <option value="117">Tabasco</option>
+                        <option value="118">Tamaulipas</option>
+                        <option value="119">Tlaxcala</option>
+                        <option value="120">Veracruz</option>
+                        <option value="121">Yucatán</option>
+                        <option value="122">Zacatecas</option>
+                    </select>
+                </div>
+
+                <div class="lp-field">
+                    <label for="elm_44" class="lp-label">Capacidad de interés</label>
+                    <select id="elm_44" class="lp-select cm-required" name="form_values[44]" required>
+                        <option value="">Capacidad de interés</option>
+                        <option value="86">Menos de 1 Ton</option>
+                        <option value="87">1 a 5 Tons</option>
+                        <option value="88">6 a 20 Tons</option>
+                        <option value="89">Más de 20 Tons</option>
+                    </select>
+                </div>
+
+                <input type="hidden" class="cm-recaptcha-v3" data-recaptcha-v3-action="form_builder"
+                    id="g_recaptcha_v3_token" name="g-recaptcha-v3-token" value="">
+
+                <button class="lp-btn" type="submit" name="dispatch[pages.send_form]">
+                    RECIBIR MI PROPUESTA TÉCNICA
+                </button>
+            </form>
+
+        </aside>
+
+    </div>
+</div>
+
+<section class="lp-band">
+    <h2 class="lp-band__title">
+        Domina tu producción con tecnología de
+        <span>hielo industrial.</span>
+    </h2>
+
+    <p class="lp-band__subtitle">
+        Sistemas de 1 a <strong>40</strong> toneladas diseñados para operación 24/7 sin interrupciones.
+    </p>
+
+    <div class="lp-features">
+        <article class="lp-feature">
+            <div class="icon-1"></div>
+            <h3 class="lp-feature__title">Alta Capacidad</h3>
+            <p class="lp-feature__text">Producción de 1 a 40 toneladas diarias.</p>
+        </article>
+
+        <article class="lp-feature">
+            <div class="icon-2"></div>
+            <h3 class="lp-feature__title">Operación 24/7</h3>
+            <p class="lp-feature__text">Funcionamiento continuo.</p>
+        </article>
+
+        <article class="lp-feature">
+            <div class="icon-3"></div>
+            <h3 class="lp-feature__title">Envíos a todo México</h3>
+            <p class="lp-feature__text">Logística y tiempos de entrega programados.</p>
+        </article>
+    </div>
+</section>
+
+<div>
+    <div class="lp-footer">
+        <h3 class="lp-footer-text-feature">
+            Soluciones de Hielo para Restaurantes, Hoteles y la Industria.
+        </h3>
+    </div>
+</div>

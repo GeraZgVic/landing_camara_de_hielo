@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cámara de Hielo IMX - Propuesta 2</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap");
+
+        :root {
+            --bg: #edf4f7;
+            --ink: #10212c;
+            --muted: #5f7180;
+            --deep: #0e2434;
+            --line: rgba(16, 33, 44, 0.1);
+            --panel: rgba(255, 255, 255, 0.92);
+            --accent: #ff7f11;
+            --accent-2: #ffb347;
+            --cyan: #86ebff;
+            --teal: #1bb7c7;
+            --shadow: 0 24px 55px rgba(12, 31, 45, 0.14);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Plus Jakarta Sans", sans-serif;
+            color: var(--ink);
+            background:
+                linear-gradient(rgba(247, 251, 253, 0.82), rgba(237, 244, 247, 0.9)),
+                url("./img/bg-body.jpg") center/cover fixed no-repeat,
+                radial-gradient(circle at 0% 0%, rgba(134, 235, 255, 0.48), transparent 24%),
+                radial-gradient(circle at 100% 20%, rgba(27, 183, 199, 0.18), transparent 18%),
+                linear-gradient(180deg, #f7fbfd, var(--bg));
+        }
+
+        .hero {
+            max-width: 1220px;
+            margin: 0 auto;
+            padding: 28px 22px 60px;
+        }
+
+        .proposal-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+        }
+
+        .proposal-nav__link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 128px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(16, 33, 44, 0.12);
+            background: rgba(255, 255, 255, 0.64);
+            color: var(--deep);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .proposal-nav__link.is-active {
+            background: rgba(20, 112, 139, 0.14);
+            border-color: rgba(20, 112, 139, 0.24);
+        }
+
+        .brand {
+            display: flex;
+            margin-bottom: 18px;
+        }
+
+        .brand img {
+            width: 108px;
+            display: block;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(340px, 410px);
+            grid-template-areas:
+                "copy card"
+                "benefits card";
+            gap: 28px;
+            align-items: start;
+        }
+
+        .copy {
+            grid-area: copy;
+            padding: 18px 4px 0 0;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            margin-bottom: 18px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(27, 183, 199, 0.12);
+            color: var(--deep);
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(2.9rem, 5vw, 5rem);
+            line-height: 0.95;
+            letter-spacing: -0.05em;
+        }
+
+        h1 span {
+            color: #14708b;
+        }
+
+        .copy p {
+            max-width: 620px;
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: var(--muted);
+        }
+
+        .scene {
+            margin-top: 32px;
+            min-height: 330px;
+            border-radius: 34px;
+            background: linear-gradient(145deg, #ffffff, #ebf4f7);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .scene::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.3), transparent 30%),
+                radial-gradient(circle at 22% 26%, rgba(134, 235, 255, 0.34), transparent 22%);
+        }
+
+        .scene__room,
+        .scene__door,
+        .scene__unit,
+        .scene__floor {
+            position: absolute;
+            border-radius: 18px;
+        }
+
+        .scene__room {
+            inset: 42px 104px 58px 36px;
+            background: linear-gradient(180deg, #edf6f9, #d6e8ee);
+            border: 1px solid rgba(16, 33, 44, 0.08);
+        }
+
+        .scene__door {
+            right: 34px;
+            top: 84px;
+            width: 108px;
+            height: 142px;
+            background: linear-gradient(180deg, #edf6f9, #ccdee7);
+            border: 1px solid rgba(16, 33, 44, 0.12);
+        }
+
+        .scene__unit {
+            top: 76px;
+            left: 62px;
+            width: 160px;
+            height: 44px;
+            background: linear-gradient(180deg, #183a4e, #0e2434);
+        }
+
+        .scene__floor {
+            left: 54px;
+            right: 42px;
+            bottom: 26px;
+            height: 24px;
+            background: linear-gradient(180deg, rgba(134, 235, 255, 0.42), rgba(134, 235, 255, 0.04));
+        }
+
+        .scene__badge {
+            position: absolute;
+            left: 24px;
+            top: 24px;
+            padding: 11px 14px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.86);
+            box-shadow: 0 18px 28px rgba(12, 31, 45, 0.08);
+            font-size: 0.86rem;
+            font-weight: 700;
+        }
+
+        .benefits {
+            grid-area: benefits;
+            padding: 18px;
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.66);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            margin-top: 18px;
+        }
+
+        .benefits__title {
+            margin: 0 0 16px;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 1.75rem;
+            line-height: 1.02;
+            letter-spacing: -0.04em;
+            color: var(--deep);
+        }
+
+        .benefits__grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .benefit {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .benefit__thumb {
+            height: 162px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(16, 33, 44, 0.08);
+            box-shadow: 0 14px 24px rgba(12, 31, 45, 0.12);
+        }
+
+        .benefit__thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .benefit strong {
+            display: block;
+            padding: 0 4px;
+            font-size: 0.84rem;
+            line-height: 1.3;
+            text-align: center;
+            color: var(--deep);
+        }
+
+        .card {
+            grid-area: card;
+            padding: 24px;
+            border-radius: 28px;
+            background: rgba(14, 36, 52, 0.96);
+            color: #fff;
+            box-shadow: 0 28px 60px rgba(11, 27, 39, 0.3);
+            align-self: center;
+        }
+
+        .card h2 {
+            margin: 0 0 10px;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 1.9rem;
+            line-height: 1.04;
+            letter-spacing: -0.04em;
+        }
+
+        .card p {
+            margin: 0 0 20px;
+            color: rgba(255, 255, 255, 0.74);
+            line-height: 1.6;
+            font-size: 0.92rem;
+        }
+
+        .field {
+            margin-bottom: 12px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.54);
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 14px 14px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            font: inherit;
+            outline: none;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.24);
+        }
+
+        select {
+            color: rgba(255, 255, 255, 0.58);
+        }
+
+        select option {
+            color: #fff;
+            background: #173042;
+        }
+
+        .card input,
+        .card select {
+            font-size: 16px;
+        }
+
+        .button {
+            width: 100%;
+            margin-top: 8px;
+            padding: 15px 18px;
+            border: 0;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            color: #fff;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 980px) {
+            .grid {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "copy"
+                    "card"
+                    "benefits";
+                justify-items: center;
+            }
+
+            .benefits {
+                max-width: 100%;
+            }
+
+            .copy,
+            .card,
+            .benefits {
+                width: 100%;
+                max-width: 720px;
+            }
+
+            .benefits__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .copy {
+                text-align: center;
+                padding-right: 0;
+            }
+
+            .copy p {
+                max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .eyebrow {
+                display: inline-flex;
+                justify-content: center;
+            }
+
+            .card {
+                max-width: 520px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding: 18px 14px 34px;
+            }
+
+            .proposal-nav {
+                justify-content: center;
+                gap: 8px;
+            }
+
+            .proposal-nav__link {
+                min-width: 0;
+                font-size: 0.74rem;
+            }
+
+            .brand img {
+                width: 92px;
+            }
+
+            .brand {
+                justify-content: center;
+                margin-bottom: 14px;
+            }
+
+            .copy {
+                padding-top: 0;
+            }
+
+            h1 {
+                font-size: 2.6rem;
+                line-height: 0.98;
+            }
+
+            .copy p {
+                font-size: 0.98rem;
+                line-height: 1.62;
+            }
+
+            .scene {
+                min-height: 250px;
+                margin-top: 22px;
+                border-radius: 24px;
+            }
+
+            .scene__room {
+                inset: 34px 84px 48px 24px;
+            }
+
+            .scene__door {
+                right: 22px;
+                top: 64px;
+                width: 86px;
+                height: 118px;
+            }
+
+            .scene__unit {
+                top: 58px;
+                left: 42px;
+                width: 116px;
+            }
+
+            .scene__floor {
+                left: 32px;
+                right: 26px;
+            }
+
+            .scene__badge {
+                left: 16px;
+                top: 16px;
+                font-size: 0.76rem;
+            }
+
+            .card {
+                padding: 22px 18px 20px;
+                border-radius: 24px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .card h2 {
+                font-size: 1.6rem;
+            }
+
+            .card p {
+                font-size: 0.84rem;
+                margin-bottom: 16px;
+            }
+
+            .benefits {
+                padding: 14px;
+                border-radius: 22px;
+            }
+
+            .benefits__title {
+                margin-bottom: 12px;
+                font-size: 1.45rem;
+            }
+
+            .benefit__thumb {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="hero">
+        <nav class="proposal-nav" aria-label="Cambiar propuesta">
+            <a class="proposal-nav__link" href="./index.html">Propuesta 1</a>
+            <a class="proposal-nav__link is-active" href="./propuesta-2.html">Propuesta 2</a>
+            <a class="proposal-nav__link" href="./propuesta-3.html">Propuesta 3</a>
+        </nav>
+        <div class="grid">
+            <div class="copy">
+                <div class="brand">
+                    <img src="https://www.importacionesamexico.com.mx/images/logos/11/Logo-de-IMX--png-prueba-2-sin-fondo-sitio-web_ddc5-w9_jiy3-j9_r2y7-p6.png"
+                        alt="Importaciones a México">
+                </div>
+                <div class="eyebrow">Cámaras de refrigeración a medida</div>
+                <h1>Cámaras de <span>refrigeración</span></h1>
+                <p>
+                    Fabricadas según las necesidades reales de su operación.
+                </p>
+                <p>
+                    Ideal para restaurantes, supermercados y centros de distribución que requieren control de
+                    temperatura y seguridad alimentaria.
+                </p>
+            </div>
+
+            <aside class="card">
+                <h2>Cuéntanos sobre tu proyecto</h2>
+                <p>Completa tus datos y te contactaremos con una propuesta acorde a tu espacio y operación.</p>
+
+                <div class="field">
+                    <label for="nombre">Nombre completo</label>
+                    <input id="nombre" type="text" placeholder="Ej. Carlos Hernandez">
+                </div>
+
+                <div class="form-row">
+                    <div class="field">
+                        <label for="correo">Correo electrónico</label>
+                        <input id="correo" type="email" placeholder="correo@empresa.com">
+                    </div>
+                    <div class="field">
+                        <label for="telefono">Teléfono</label>
+                        <input id="telefono" type="tel" placeholder="+52 55 0000 0000">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="espacio">Espacio aproximado</label>
+                    <select id="espacio">
+                        <option selected>Selecciona una opción</option>
+                        <option>Menos de 10 m2</option>
+                        <option>10 a 30 m2</option>
+                        <option>30 a 60 m2</option>
+                        <option>Más de 60 m2</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="estado">Estado</label>
+                    <select id="estado">
+                        <option selected>Selecciona tu estado</option>
+                        <option>Ciudad de México</option>
+                        <option>Jalisco</option>
+                        <option>Nuevo León</option>
+                        <option>Estado de México</option>
+                    </select>
+                </div>
+
+                <button class="button" type="button">Recibir mi propuesta</button>
+            </aside>
+
+            <div class="benefits">
+                <h2 class="benefits__title">Instalación completa de cada proyecto</h2>
+                <div class="benefits__grid">
+                    <div class="benefit">
+                        <div class="benefit__thumb">
+                            <img src="./img/1.jpeg" alt="Componentes industriales para cámara de refrigeración">
+                        </div>
+                        <strong>Componentes industriales para cámaras de refrigeración.</strong>
+                    </div>
+                    <div class="benefit">
+                        <div class="benefit__thumb">
+                            <img src="./img/2.jpeg" alt="Instalación por técnicos especializados">
+                        </div>
+                        <strong>Instalación por técnicos especializados en sitio.</strong>
+                    </div>
+                    <div class="benefit">
+                        <div class="benefit__thumb">
+                            <img src="./img/3.png" alt="Proyecto adaptado a la necesidad del cliente">
+                        </div>
+                        <strong>Proyectos adaptados a la necesidad de cada cliente.</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

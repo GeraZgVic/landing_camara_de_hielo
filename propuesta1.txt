@@ -1,0 +1,983 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Camara de Hielo</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@600;700;800&display=swap");
+
+        :root {
+            --bg: #eef4f6;
+            --ink: #10212d;
+            --muted: #5e6d78;
+            --deep: #071a26;
+            --deep-2: #103248;
+            --line: rgba(16, 33, 45, 0.12);
+            --card: rgba(255, 255, 255, 0.9);
+            --card-strong: #ffffff;
+            --accent: #ff7a00;
+            --accent-2: #f9a826;
+            --ice: #9de7ff;
+            --teal: #2ec4c7;
+            --shadow: 0 28px 70px rgba(8, 25, 37, 0.18);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Manrope", sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at top left, rgba(157, 231, 255, 0.45), transparent 28%),
+                radial-gradient(circle at top right, rgba(46, 196, 199, 0.18), transparent 24%),
+                linear-gradient(180deg, #f5fbfc 0%, var(--bg) 42%, #f8fbfc 100%);
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        .lp-shell {
+            overflow: hidden;
+        }
+
+        .lp-hero {
+            position: relative;
+            padding: 28px 20px 64px;
+        }
+
+        .lp-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(135deg, rgba(7, 26, 38, 0.96), rgba(16, 50, 72, 0.86)),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0));
+            clip-path: ellipse(118% 100% at 50% 0%);
+        }
+
+        .lp-hero::after {
+            content: "";
+            position: absolute;
+            top: 120px;
+            right: -120px;
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(157, 231, 255, 0.24), rgba(157, 231, 255, 0));
+            filter: blur(10px);
+        }
+
+        .lp-wrap {
+            position: relative;
+            z-index: 1;
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        .lp-topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 34px;
+        }
+
+        .lp-brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .lp-brand img {
+            width: 116px;
+            height: auto;
+        }
+
+        .lp-brand__copy {
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 14px;
+            line-height: 1.35;
+        }
+
+        .lp-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #eaf9ff;
+            font-size: 13px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .lp-chip::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--ice), var(--teal));
+            box-shadow: 0 0 18px rgba(157, 231, 255, 0.7);
+        }
+
+        .lp-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(320px, 420px);
+            gap: 34px;
+            align-items: start;
+        }
+
+        .lp-copy {
+            color: #fff;
+            padding-top: 22px;
+        }
+
+        .lp-kicker {
+            display: inline-flex;
+            margin-bottom: 18px;
+            padding: 9px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            color: #dff8ff;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .lp-title {
+            margin: 0;
+            font-family: "Sora", sans-serif;
+            font-size: clamp(2.6rem, 5vw, 4.9rem);
+            line-height: 0.98;
+            letter-spacing: -0.05em;
+            max-width: 720px;
+        }
+
+        .lp-title span {
+            color: var(--ice);
+        }
+
+        .lp-subtitle {
+            max-width: 640px;
+            margin: 20px 0 0;
+            font-size: clamp(1.04rem, 1.7vw, 1.28rem);
+            line-height: 1.72;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .lp-points {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            margin: 28px 0 0;
+            max-width: 740px;
+        }
+
+        .lp-point {
+            padding: 18px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+        }
+
+        .lp-point strong {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 1rem;
+        }
+
+        .lp-point span {
+            display: block;
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 0.93rem;
+            line-height: 1.55;
+        }
+
+        .lp-trust {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .lp-trust span {
+            padding: 10px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 0.93rem;
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .lp-card {
+            position: relative;
+            padding: 24px;
+            border-radius: 28px;
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.86));
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(14px);
+        }
+
+        .lp-card::before {
+            content: "";
+            position: absolute;
+            inset: 12px;
+            border-radius: 22px;
+            border: 1px solid rgba(16, 50, 72, 0.08);
+            pointer-events: none;
+        }
+
+        .lp-card__eyebrow {
+            display: inline-block;
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(46, 196, 199, 0.12);
+            color: var(--deep-2);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .lp-card__title {
+            margin: 0;
+            font-family: "Sora", sans-serif;
+            font-size: 1.8rem;
+            line-height: 1.08;
+            letter-spacing: -0.04em;
+            color: var(--deep);
+        }
+
+        .lp-card__text {
+            margin: 12px 0 18px;
+            color: var(--muted);
+            font-size: 0.98rem;
+            line-height: 1.65;
+        }
+
+        .lp-form {
+            display: grid;
+            gap: 12px;
+        }
+
+        .lp-field {
+            display: grid;
+            gap: 7px;
+        }
+
+        .lp-field--split {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .lp-label {
+            font-size: 0.83rem;
+            font-weight: 700;
+            color: var(--deep-2);
+        }
+
+        .lp-input,
+        .lp-select,
+        .lp-textarea {
+            width: 100%;
+            border: 1px solid rgba(16, 33, 45, 0.12);
+            border-radius: 16px;
+            padding: 14px 15px;
+            background: var(--card-strong);
+            color: var(--ink);
+            font: inherit;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+        }
+
+        .lp-input:focus,
+        .lp-select:focus,
+        .lp-textarea:focus {
+            border-color: rgba(46, 196, 199, 0.7);
+            box-shadow: 0 0 0 4px rgba(46, 196, 199, 0.12);
+            transform: translateY(-1px);
+        }
+
+        .lp-textarea {
+            min-height: 104px;
+            resize: vertical;
+        }
+
+        .lp-btn {
+            margin-top: 4px;
+            border: 0;
+            border-radius: 18px;
+            padding: 16px 18px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            color: #fff;
+            font: inherit;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            box-shadow: 0 18px 34px rgba(255, 122, 0, 0.26);
+        }
+
+        .lp-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .lp-note {
+            margin: 10px 0 0;
+            color: var(--muted);
+            font-size: 0.83rem;
+            line-height: 1.5;
+        }
+
+        .lp-preview {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 18px;
+            align-items: stretch;
+            margin-top: 58px;
+        }
+
+        .lp-preview__main,
+        .lp-preview__side {
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+        }
+
+        .lp-preview__main {
+            position: relative;
+            min-height: 330px;
+            padding: 26px;
+            background:
+                linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(233, 245, 248, 0.82));
+            overflow: hidden;
+        }
+
+        .lp-preview__main::before {
+            content: "";
+            position: absolute;
+            right: -40px;
+            bottom: -60px;
+            width: 250px;
+            height: 250px;
+            border-radius: 34px;
+            background: linear-gradient(135deg, rgba(46, 196, 199, 0.22), rgba(157, 231, 255, 0.05));
+            transform: rotate(18deg);
+        }
+
+        .lp-preview__head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 26px;
+        }
+
+        .lp-preview__head strong {
+            font-family: "Sora", sans-serif;
+            font-size: 1.35rem;
+            letter-spacing: -0.03em;
+        }
+
+        .lp-preview__head span {
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .lp-room {
+            position: relative;
+            height: 220px;
+            border-radius: 24px;
+            background:
+                linear-gradient(180deg, rgba(9, 31, 46, 0.06), rgba(9, 31, 46, 0.14)),
+                linear-gradient(135deg, #f7fbfd, #d8ebf1);
+            border: 1px solid rgba(16, 33, 45, 0.08);
+            overflow: hidden;
+        }
+
+        .lp-room__wall,
+        .lp-room__door,
+        .lp-room__unit,
+        .lp-room__floor {
+            position: absolute;
+            border-radius: 16px;
+        }
+
+        .lp-room__wall {
+            inset: 18px 92px 42px 18px;
+            background: linear-gradient(180deg, #eff7fa, #dcecf2);
+            border: 1px solid rgba(16, 33, 45, 0.08);
+        }
+
+        .lp-room__door {
+            top: 56px;
+            right: 34px;
+            width: 96px;
+            height: 124px;
+            background: linear-gradient(180deg, #edf5f8, #cee2ea);
+            border: 1px solid rgba(16, 33, 45, 0.12);
+            box-shadow: inset 0 0 0 8px rgba(255, 255, 255, 0.24);
+        }
+
+        .lp-room__door::before {
+            content: "";
+            position: absolute;
+            top: 52px;
+            left: 16px;
+            width: 24px;
+            height: 8px;
+            border-radius: 999px;
+            background: #8da8b5;
+        }
+
+        .lp-room__unit {
+            top: 44px;
+            left: 38px;
+            width: 132px;
+            height: 42px;
+            background: linear-gradient(180deg, #193a50, #0f2939);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 12px 24px rgba(7, 26, 38, 0.18);
+        }
+
+        .lp-room__unit::before,
+        .lp-room__unit::after {
+            content: "";
+            position: absolute;
+            top: 10px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background:
+                radial-gradient(circle, rgba(255, 255, 255, 0.9) 0 2px, transparent 2px),
+                conic-gradient(from 0deg, #b8d8e5, #2b6078, #b8d8e5);
+        }
+
+        .lp-room__unit::before {
+            right: 18px;
+        }
+
+        .lp-room__unit::after {
+            right: 50px;
+        }
+
+        .lp-room__floor {
+            left: 30px;
+            right: 26px;
+            bottom: 18px;
+            height: 26px;
+            background: linear-gradient(180deg, rgba(157, 231, 255, 0.45), rgba(111, 197, 227, 0.15));
+        }
+
+        .lp-room__tag {
+            position: absolute;
+            left: 24px;
+            bottom: 24px;
+            padding: 10px 12px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.78);
+            color: var(--deep);
+            font-size: 0.84rem;
+            font-weight: 700;
+            backdrop-filter: blur(8px);
+        }
+
+        .lp-preview__side {
+            display: grid;
+            gap: 18px;
+        }
+
+        .lp-metric,
+        .lp-panel {
+            padding: 22px;
+            border-radius: 28px;
+            background: linear-gradient(180deg, #fff, rgba(255, 255, 255, 0.88));
+            border: 1px solid rgba(16, 33, 45, 0.08);
+        }
+
+        .lp-metric strong {
+            display: block;
+            font-family: "Sora", sans-serif;
+            font-size: 2.4rem;
+            line-height: 1;
+            letter-spacing: -0.05em;
+            color: var(--deep);
+        }
+
+        .lp-metric span,
+        .lp-panel p {
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .lp-list {
+            display: grid;
+            gap: 12px;
+            margin-top: 14px;
+        }
+
+        .lp-list div {
+            padding: 12px 14px;
+            border-radius: 16px;
+            background: rgba(16, 50, 72, 0.05);
+            color: var(--deep-2);
+            font-size: 0.94rem;
+            font-weight: 700;
+        }
+
+        .lp-section {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 20px 78px;
+        }
+
+        .lp-section__head {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .lp-section__head h2 {
+            margin: 0;
+            font-family: "Sora", sans-serif;
+            font-size: clamp(1.9rem, 3vw, 3rem);
+            letter-spacing: -0.05em;
+            line-height: 1.05;
+        }
+
+        .lp-section__head p {
+            max-width: 520px;
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .lp-cards {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .lp-info {
+            padding: 24px;
+            border-radius: 26px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.82));
+            border: 1px solid rgba(16, 33, 45, 0.08);
+            box-shadow: 0 20px 40px rgba(8, 25, 37, 0.08);
+        }
+
+        .lp-info__icon {
+            width: 50px;
+            height: 50px;
+            display: grid;
+            place-items: center;
+            margin-bottom: 16px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(46, 196, 199, 0.16), rgba(157, 231, 255, 0.3));
+            color: var(--deep-2);
+            font-size: 1.35rem;
+            font-weight: 800;
+        }
+
+        .lp-info h3 {
+            margin: 0 0 8px;
+            font-family: "Sora", sans-serif;
+            font-size: 1.15rem;
+            letter-spacing: -0.03em;
+        }
+
+        .lp-info p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        .lp-band {
+            margin: 0 20px 78px;
+            padding: 34px;
+            border-radius: 34px;
+            background:
+                linear-gradient(135deg, rgba(7, 26, 38, 0.98), rgba(16, 50, 72, 0.96)),
+                linear-gradient(135deg, rgba(157, 231, 255, 0.08), rgba(255, 255, 255, 0));
+            color: #fff;
+            box-shadow: var(--shadow);
+        }
+
+        .lp-band__grid {
+            max-width: 1180px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .lp-band h2 {
+            margin: 0 0 10px;
+            font-family: "Sora", sans-serif;
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            letter-spacing: -0.05em;
+            line-height: 1.05;
+        }
+
+        .lp-band p {
+            margin: 0;
+            max-width: 760px;
+            color: rgba(255, 255, 255, 0.74);
+            line-height: 1.7;
+        }
+
+        .lp-band__badge {
+            padding: 18px 22px;
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            text-align: center;
+        }
+
+        .lp-band__badge strong {
+            display: block;
+            font-family: "Sora", sans-serif;
+            font-size: 2.6rem;
+            line-height: 1;
+        }
+
+        .lp-band__badge span {
+            color: rgba(255, 255, 255, 0.76);
+            font-size: 0.92rem;
+        }
+
+        .lp-footer {
+            padding: 0 20px 40px;
+        }
+
+        .lp-footer__inner {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 22px 0 0;
+            border-top: 1px solid rgba(16, 33, 45, 0.1);
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            font-size: 0.92rem;
+        }
+
+        @media (max-width: 1040px) {
+            .lp-grid,
+            .lp-preview,
+            .lp-cards,
+            .lp-band__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .lp-card {
+                max-width: 560px;
+            }
+
+            .lp-section__head,
+            .lp-footer__inner,
+            .lp-topbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .lp-preview__side {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 760px) {
+            .lp-hero {
+                padding-top: 18px;
+            }
+
+            .lp-brand img {
+                width: 92px;
+            }
+
+            .lp-brand__copy,
+            .lp-chip {
+                font-size: 12px;
+            }
+
+            .lp-copy {
+                padding-top: 6px;
+            }
+
+            .lp-points,
+            .lp-field--split,
+            .lp-preview__side {
+                grid-template-columns: 1fr;
+            }
+
+            .lp-band,
+            .lp-preview__main,
+            .lp-card,
+            .lp-info,
+            .lp-metric,
+            .lp-panel {
+                border-radius: 24px;
+            }
+
+            .lp-band {
+                margin-left: 14px;
+                margin-right: 14px;
+                padding: 26px;
+            }
+
+            .lp-section,
+            .lp-footer,
+            .lp-hero {
+                padding-left: 14px;
+                padding-right: 14px;
+            }
+
+            .lp-room {
+                height: 190px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lp-shell">
+        <section class="lp-hero">
+            <div class="lp-wrap">
+                <div class="lp-topbar">
+                    <div class="lp-brand">
+                        <img src="https://www.importacionesamexico.com.mx/images/logos/11/Logo-de-IMX--png-prueba-2-sin-fondo-sitio-web_ddc5-w9_jiy3-j9_r2y7-p6.png"
+                            alt="Importaciones a Mexico">
+                        <div class="lp-brand__copy">
+                            Soluciones de refrigeracion comercial e industrial<br>
+                            para operacion continua en Mexico.
+                        </div>
+                    </div>
+                    <div class="lp-chip">Diseno preliminar para validacion visual</div>
+                </div>
+
+                <div class="lp-grid">
+                    <div class="lp-copy">
+                        <div class="lp-kicker">Landing para campana de Google Ads</div>
+                        <h1 class="lp-title">
+                            Camaras de hielo que convierten espacio frio en <span>operacion rentable</span>.
+                        </h1>
+                        <p class="lp-subtitle">
+                            Propuesta visual para una landing enfocada en camaras de hielo industriales. El mensaje
+                            prioriza capacidad, conservacion y asesoria tecnica para negocios que necesitan almacenar
+                            hielo de forma segura y constante.
+                        </p>
+
+                        <div class="lp-points">
+                            <div class="lp-point">
+                                <strong>Diseno a medida</strong>
+                                <span>Configuraciones para centros de distribucion, hoteles, restaurantes y plantas de
+                                    proceso.</span>
+                            </div>
+                            <div class="lp-point">
+                                <strong>Aislamiento eficiente</strong>
+                                <span>Paneleria y componentes pensados para mantener temperatura y reducir perdida
+                                    termica.</span>
+                            </div>
+                            <div class="lp-point">
+                                <strong>Puesta en marcha</strong>
+                                <span>Orientacion comercial y tecnica para elegir capacidad, acceso y circulacion
+                                    interna.</span>
+                            </div>
+                        </div>
+
+                        <div class="lp-trust">
+                            <span>Aplicaciones para operacion 24/7</span>
+                            <span>Atencion comercial en todo Mexico</span>
+                            <span>Proyecto visual alineado a CS-Cart</span>
+                        </div>
+                    </div>
+
+                    <aside class="lp-card" aria-label="Formulario preliminar">
+                        <div class="lp-card__eyebrow">Formulario visual</div>
+                        <h2 class="lp-card__title">Solicita una propuesta para tu camara de hielo</h2>
+                        <p class="lp-card__text">
+                            Esta maqueta solo valida diseno. Los campos definitivos del backend de CS-Cart se integran
+                            despues del visto bueno.
+                        </p>
+
+                        <form class="lp-form" action="#" method="get">
+                            <div class="lp-field">
+                                <label class="lp-label" for="nombre">Nombre completo</label>
+                                <input class="lp-input" id="nombre" type="text" placeholder="Tu nombre">
+                            </div>
+
+                            <div class="lp-field">
+                                <label class="lp-label" for="correo">Correo electronico</label>
+                                <input class="lp-input" id="correo" type="email" placeholder="tu@empresa.com">
+                            </div>
+
+                            <div class="lp-field--split">
+                                <div class="lp-field">
+                                    <label class="lp-label" for="telefono">Telefono</label>
+                                    <input class="lp-input" id="telefono" type="tel" placeholder="Numero de contacto">
+                                </div>
+                                <div class="lp-field">
+                                    <label class="lp-label" for="estado">Estado</label>
+                                    <select class="lp-select" id="estado">
+                                        <option>Selecciona tu estado</option>
+                                        <option>Ciudad de Mexico</option>
+                                        <option>Jalisco</option>
+                                        <option>Nuevo Leon</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="lp-field">
+                                <label class="lp-label" for="espacio">Espacio aproximado</label>
+                                <select class="lp-select" id="espacio">
+                                    <option>Selecciona un rango</option>
+                                    <option>Menos de 10 m2</option>
+                                    <option>10 a 30 m2</option>
+                                    <option>30 a 60 m2</option>
+                                    <option>Mas de 60 m2</option>
+                                </select>
+                            </div>
+
+                            <div class="lp-field">
+                                <label class="lp-label" for="detalle">Detalle del proyecto</label>
+                                <textarea class="lp-textarea" id="detalle"
+                                    placeholder="Cuanto hielo almacenas, que tipo de operacion tienes y que espacio disponible manejas"></textarea>
+                            </div>
+
+                            <button class="lp-btn" type="submit">QUIERO UNA PROPUESTA VISUAL</button>
+                        </form>
+
+                        <p class="lp-note">
+                            El siguiente paso sera sustituir esta maqueta por los campos reales del formulario productivo.
+                        </p>
+                    </aside>
+                </div>
+
+                <div class="lp-preview">
+                    <div class="lp-preview__main">
+                        <div class="lp-preview__head">
+                            <div>
+                                <strong>Concepto visual de camara modular</strong>
+                                <span>Bloque grafico para reforzar el mensaje principal de la campana.</span>
+                            </div>
+                            <div class="lp-chip">Frio controlado</div>
+                        </div>
+
+                        <div class="lp-room" aria-hidden="true">
+                            <div class="lp-room__wall"></div>
+                            <div class="lp-room__door"></div>
+                            <div class="lp-room__unit"></div>
+                            <div class="lp-room__floor"></div>
+                            <div class="lp-room__tag">Conservacion estable para alto volumen</div>
+                        </div>
+                    </div>
+
+                    <div class="lp-preview__side">
+                        <div class="lp-metric">
+                            <strong>-18 C</strong>
+                            <span>Mensaje visual para comunicar conservacion constante y control de temperatura.</span>
+                        </div>
+
+                        <div class="lp-panel">
+                            <p>
+                                La intencion del layout es proyectar una solucion tecnica, limpia y confiable, sin
+                                parecer plantilla generica.
+                            </p>
+                            <div class="lp-list">
+                                <div>Hero de alta conversion con foco en beneficio</div>
+                                <div>Formulario visible desde el primer scroll</div>
+                                <div>Bloques de confianza y capacidad operativa</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="lp-section">
+            <div class="lp-section__head">
+                <h2>Una propuesta visual pensada para vender capacidad, orden y conservacion.</h2>
+                <p>
+                    Esta segunda franja baja la promesa comercial a beneficios concretos. Sirve para sostener la
+                    intencion del usuario que llega desde anuncio pagado y necesita entender rapido el valor.
+                </p>
+            </div>
+
+            <div class="lp-cards">
+                <article class="lp-info">
+                    <div class="lp-info__icon">01</div>
+                    <h3>Almacenamiento eficiente</h3>
+                    <p>
+                        Se comunica espacio util, flujo de carga y acceso ordenado para operaciones que no pueden
+                        improvisar.
+                    </p>
+                </article>
+
+                <article class="lp-info">
+                    <div class="lp-info__icon">02</div>
+                    <h3>Construccion modular</h3>
+                    <p>
+                        El lenguaje visual sugiere soluciones escalables para proyectos nuevos o ampliaciones sobre
+                        infraestructura existente.
+                    </p>
+                </article>
+
+                <article class="lp-info">
+                    <div class="lp-info__icon">03</div>
+                    <h3>Acompañamiento comercial</h3>
+                    <p>
+                        La composicion busca dar sensacion de asesoria seria, no solo de venta de equipo aislado.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="lp-band">
+            <div class="lp-band__grid">
+                <div>
+                    <h2>Lista para convertirse despues en HTML productivo compatible con CS-Cart.</h2>
+                    <p>
+                        Cuando aprueben el look and feel, el siguiente paso es cambiar la maqueta del formulario por
+                        los campos reales de `codigo-a-tomar-para-index.html` y ajustar nombres, `page_id`,
+                        `form_values[...]` y el resto del backend.
+                    </p>
+                </div>
+                <div class="lp-band__badge">
+                    <strong>100%</strong>
+                    <span>orientada a validacion visual</span>
+                </div>
+            </div>
+        </section>
+
+        <footer class="lp-footer">
+            <div class="lp-footer__inner">
+                <span>Propuesta visual inicial para landing de camara de hielo.</span>
+                <span>Backend real pendiente de integracion.</span>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
