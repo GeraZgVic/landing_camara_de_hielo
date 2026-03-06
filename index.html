@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cámaras de Hielo IMX</title>
     <style>
-        @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap");
-
         :root {
+            --font-stack: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
             --navy: #091424;
             --navy-2: #102443;
             --navy-3: #15325e;
@@ -16,8 +15,8 @@
             --blue-soft: #78b3ff;
             --ice: #d9ebff;
             --white: #f7fbff;
-            --muted: rgba(217, 235, 255, 0.72);
-            --muted-2: rgba(217, 235, 255, 0.42);
+            --muted: rgba(247, 251, 255, 0.96);
+            --muted-2: rgba(247, 251, 255, 0.84);
             --gold: #f7a21b;
             --line: rgba(120, 179, 255, 0.16);
             --card: rgba(10, 24, 45, 0.8);
@@ -41,7 +40,7 @@
                 linear-gradient(rgba(8, 18, 34, 0.68), rgba(8, 18, 34, 0.9)),
                 url("./img/bg-body.jpg") center/cover fixed no-repeat,
                 linear-gradient(160deg, #0a1628 0%, #07111e 60%, #040912 100%);
-            font-family: "Plus Jakarta Sans", sans-serif;
+            font-family: var(--font-stack);
             -webkit-font-smoothing: antialiased;
         }
 
@@ -75,48 +74,9 @@
             padding: 0 42px;
         }
 
-        .proposal-nav {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 22px 0 0;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .proposal-nav__link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 128px;
-            padding: 10px 14px;
-            border-radius: 999px;
-            border: 1px solid rgba(120, 179, 255, 0.14);
-            background: rgba(255, 255, 255, 0.06);
-            color: var(--muted);
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-        }
-
-        .proposal-nav__link:hover {
-            background: rgba(46, 124, 255, 0.12);
-            border-color: rgba(120, 179, 255, 0.3);
-            color: var(--white);
-        }
-
-        .proposal-nav__link.is-active {
-            background: linear-gradient(135deg, rgba(46, 124, 255, 0.22), rgba(120, 179, 255, 0.12));
-            border-color: rgba(120, 179, 255, 0.34);
-            color: var(--white);
-        }
-
         .brand {
             display: flex;
-            margin-bottom: 18px;
+            margin-bottom: 28px;
         }
 
         .brand img {
@@ -131,7 +91,7 @@
             gap: 42px;
             align-items: start;
             min-height: calc(100vh - 110px);
-            padding: 38px 0 34px;
+            padding: 44px 0 34px;
         }
 
         .content-stack {
@@ -142,7 +102,7 @@
         }
 
         .hero {
-            padding: 26px 0 0;
+            padding: 34px 0 0;
         }
 
         .eyebrow {
@@ -165,11 +125,13 @@
         }
 
         h1 {
-            margin: 0;
-            font-family: "Space Grotesk", sans-serif;
-            font-size: clamp(3rem, 5.5vw, 5.15rem);
-            line-height: 1.02;
-            letter-spacing: -0.05em;
+            font-size: 55px;
+            margin: 0 0 10px;
+            font-family: var(--font-stack);
+            font-optical-sizing: auto;
+            font-style: normal;
+            font-weight: 700;
+            letter-spacing: 0.2px;
         }
 
         h1 span {
@@ -185,7 +147,7 @@
             margin: 22px 0 0;
             color: var(--muted);
             font-size: 1.06rem;
-            line-height: 1.72;
+            line-height: 1.84;
             font-weight: 300;
         }
 
@@ -198,8 +160,8 @@
             max-width: 520px;
             margin: 18px 0 0;
             color: var(--muted-2);
-            font-size: 0.84rem;
-            line-height: 1.7;
+            font-size: 0.95rem;
+            line-height: 1.75;
             letter-spacing: 0.02em;
         }
 
@@ -209,7 +171,7 @@
 
         .stat strong {
             display: block;
-            font-family: "Space Grotesk", sans-serif;
+            font-family: var(--font-stack);
             font-size: 2.15rem;
             line-height: 1;
             letter-spacing: -0.04em;
@@ -240,7 +202,7 @@
 
         .features__title {
             margin: 0 0 16px;
-            font-family: "Space Grotesk", sans-serif;
+            font-family: var(--font-stack);
             font-size: 1.9rem;
             line-height: 1.02;
             letter-spacing: -0.04em;
@@ -288,7 +250,7 @@
             display: block;
         }
 
-        .feature strong {
+        .feature__title {
             display: block;
             padding: 0 4px;
             font-size: 0.84rem;
@@ -314,7 +276,7 @@
 
         .form-card h2 {
             margin: 0 0 8px;
-            font-family: "Space Grotesk", sans-serif;
+            font-family: var(--font-stack);
             font-size: 2rem;
             line-height: 1.04;
             letter-spacing: -0.04em;
@@ -325,7 +287,7 @@
             margin: 0 0 24px;
             color: var(--muted);
             font-size: 0.9rem;
-            line-height: 1.55;
+            line-height: 1.78;
         }
 
         .form-group {
@@ -341,7 +303,7 @@
         label {
             display: block;
             margin-bottom: 6px;
-            color: var(--muted-2);
+            color: var(--white);
             font-size: 0.74rem;
             font-weight: 700;
             letter-spacing: 0.06em;
@@ -365,7 +327,7 @@
 
         input::placeholder,
         textarea::placeholder {
-            color: rgba(217, 235, 255, 0.24);
+            color: rgba(247, 251, 255, 0.58);
         }
 
         input:focus,
@@ -378,7 +340,7 @@
 
         select {
             padding-right: 38px;
-            color: rgba(217, 235, 255, 0.52);
+            color: rgba(247, 251, 255, 0.94);
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2378b3ff' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 14px center;
@@ -404,7 +366,7 @@
             color: var(--white);
             background: linear-gradient(135deg, #f79c14 0%, #f5b340 100%);
             box-shadow: 0 12px 28px rgba(247, 156, 20, 0.32);
-            font-family: "Syne", sans-serif;
+            font-family: var(--font-stack);
             font-size: 0.9rem;
             font-weight: 700;
             letter-spacing: 0.08em;
@@ -499,16 +461,6 @@
                 padding: 0 14px;
             }
 
-            .proposal-nav {
-                justify-content: center;
-                gap: 8px;
-            }
-
-            .proposal-nav__link {
-                min-width: 0;
-                font-size: 0.74rem;
-            }
-
             .brand {
                 justify-content: center;
                 margin-bottom: 14px;
@@ -596,7 +548,7 @@
                 height: 180px;
             }
 
-            .feature strong {
+            .feature__title {
                 font-size: 0.82rem;
             }
 
@@ -611,12 +563,6 @@
 
 <body>
     <div class="shell">
-        <nav class="proposal-nav" aria-label="Cambiar propuesta">
-            <a class="proposal-nav__link is-active" href="./index.html">Propuesta 1</a>
-            <a class="proposal-nav__link" href="./propuesta-2.html">Propuesta 2</a>
-            <a class="proposal-nav__link" href="./propuesta-3.html">Propuesta 3</a>
-        </nav>
-
         <main class="layout">
             <div class="content-stack">
                 <section class="hero">
@@ -642,19 +588,19 @@
                             <div class="feature__thumb">
                                 <img src="./img/1.jpeg" alt="Componentes industriales para cámara de refrigeración">
                             </div>
-                            <strong>Componentes industriales para cámaras de refrigeración.</strong>
+                            <p class="feature__title">Componentes industriales para cámaras de refrigeración.</p>
                         </article>
                         <article class="feature">
                             <div class="feature__thumb">
                                 <img src="./img/2.jpeg" alt="Instalación por técnicos especializados">
                             </div>
-                            <strong>Instalación por técnicos especializados en sitio.</strong>
+                            <p class="feature__title">Instalación por técnicos especializados en sitio.</p>
                         </article>
                         <article class="feature">
                             <div class="feature__thumb">
                                 <img src="./img/3.png" alt="Proyecto adaptado a la necesidad del cliente">
                             </div>
-                            <strong>Proyectos adaptados a la necesidad de cada cliente.</strong>
+                            <p class="feature__title">Proyectos adaptados a la necesidad de cada cliente.</p>
                         </article>
                     </div>
                 </div>
@@ -682,13 +628,12 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="espacio">Espacio aproximado</label>
+                        <label for="espacio">Dimensiones</label>
                         <select id="espacio">
                             <option selected>Selecciona una opción</option>
-                            <option>Menos de 10 m2</option>
-                            <option>10 a 30 m2</option>
-                            <option>30 a 60 m2</option>
-                            <option>Más de 60 m2</option>
+                            <option>Menos de 50m3</option>
+                            <option>50m3</option>
+                            <option>Más de 50m3</option>
                         </select>
                     </div>
 
