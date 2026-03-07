@@ -448,12 +448,17 @@
         @media (max-width: 640px) {
             .shell { padding: 0 18px; }
 
-            .brand { top: 16px; left: 16px; }
+            .brand { 
+                position: static; 
+                top: 0; 
+                left: 0; 
+                margin: 12px 0 8px;
+            }
             .brand img { width: 88px; }
 
             .layout {
                 gap: 20px;
-                padding: 64px 0 24px;
+                padding: 24px 0 24px;
             }
 
             .hero { padding: 0; }
@@ -493,10 +498,8 @@
             }
 
             .form-card h2 { font-size: 1.3rem; }
-
             .form-card p {
-                font-size: 0.84rem;
-                margin-bottom: 16px;
+                display: none;
             }
 
             label { font-size: 0.85rem; }
